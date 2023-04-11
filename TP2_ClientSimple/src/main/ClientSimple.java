@@ -1,9 +1,10 @@
-package main.client;
+package main;
 
-import main.client.models.Course;
+import main.models.Course;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClientSimple {
@@ -17,21 +18,22 @@ public class ClientSimple {
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("What would you like to do.");
+            System.out.println("What would you like to do?");
             String szn = scanner.nextLine();
 
             os.writeObject(szn);
 
-            System.out.println("Request sent to the server.");
+            //System.out.println("Request sent to the server.");
 
             ObjectInputStream is = new ObjectInputStream(clientSocket.getInputStream());
 
-            Course cours = (Course) is.readObject();
-            //String cours = (String) is.readObject();
+            ArrayList<Course> cours = new ArrayList<>();
+
+            cours = (ArrayList<Course>) is.readObject();
 
             //System.out.println("Cours reçu");
 
-            //System.out.println(cours.toString());
+            //System.out.println(cours.get(1).toString());
 
             os.close();
             is.close();

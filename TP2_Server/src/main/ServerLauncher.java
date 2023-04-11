@@ -1,4 +1,4 @@
-package main.server;
+package main;
 
 /**
  * Classe qui s'occupe de lancer un serveur selon le port donné.

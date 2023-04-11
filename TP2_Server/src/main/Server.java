@@ -1,7 +1,7 @@
-package main.server;
+package main;
 
 import javafx.util.Pair;
-import main.server.models.Course;
+import main.models.Course;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -156,13 +156,13 @@ public class Server {
      */
     public void handleLoadCourses(String arg) {
 
-        System.out.println("Requete reçue.");
+        //System.out.println("Requete reçue.");
 
         ArrayList<Course> cours = new ArrayList<>();
         ArrayList<Course> coursToSend = new ArrayList<>();
 
         try{
-            FileReader file = new FileReader("src/main/server/data/cours.txt");
+            FileReader file = new FileReader("src/main/data/cours.txt");
 
             BufferedReader reader = new BufferedReader(file);
 
@@ -184,18 +184,19 @@ public class Server {
 
                 }
             }
+
+            //System.out.println("Tableau de cours à envoyer créé.");
+
         } catch (IOException e){
             System.out.println("Erreur de lecture du fichier.");
         }
-
-        System.out.println("Tableau de cours à envoyer créé.");
 
         System.out.println(coursToSend.get(0).toString());
 
         try{
 
-            objectOutputStream.writeObject(coursToSend.get(0));
-            System.out.println("Cours (0) envoyé!");
+            objectOutputStream.writeObject(coursToSend);
+            //System.out.println("Tableau de cours envoyé");
 
         } catch(IOException e){
             System.out.println("Erreur d'éciture du fichier.");

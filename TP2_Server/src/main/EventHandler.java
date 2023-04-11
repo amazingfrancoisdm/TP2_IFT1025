@@ -1,4 +1,4 @@
-package main.server;
+package main;
 
 /**
  * Interface des événements/requêtes que le serveur peut traiter.
