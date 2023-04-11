@@ -18,8 +18,6 @@ public class ServerLauncher {
     public static void main(String[] args) {
         Server server;
 
-        System.out.println("Hello Test de compilation");
-
         try {
             server = new Server(PORT);
             System.out.println("Server is running...");

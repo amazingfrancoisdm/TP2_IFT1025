@@ -156,6 +156,8 @@ public class Server {
      */
     public void handleLoadCourses(String arg) {
 
+        System.out.println("Requete reçue.");
+
         ArrayList<Course> cours = new ArrayList<>();
         ArrayList<Course> coursToSend = new ArrayList<>();
 
@@ -186,8 +188,18 @@ public class Server {
             System.out.println("Erreur de lecture du fichier.");
         }
 
+        System.out.println("Tableau de cours à envoyer créé.");
 
+        System.out.println(coursToSend.get(0).toString());
 
+        try{
+
+            objectOutputStream.writeObject(coursToSend.get(0));
+            System.out.println("Cours (0) envoyé!");
+
+        } catch(IOException e){
+            System.out.println("Erreur d'éciture du fichier.");
+        }
 
 
     }
