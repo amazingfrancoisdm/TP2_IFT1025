@@ -9,8 +9,5 @@
         <module name="TP2_Server" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TP2_Server" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>

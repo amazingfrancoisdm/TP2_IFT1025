@@ -20,11 +20,11 @@ import java.util.Arrays;
  */
 public class Server {
     /**
-     * La commande que l'utilisateur doit écrire afin de s'inscrire.
+     * Le String (commande) que l'utilisateur doit écrire afin de s'inscrire.
      */
     public final static String REGISTER_COMMAND = "INSCRIRE";
     /**
-     * La commande que l'utilisateur doit écrire afin de charger les cours qu'il veut voir selon la session.
+     * La String (commande) que l'utilisateur doit écrire afin de charger les cours qu'il veut voir selon la session.
      */
     public final static String LOAD_COMMAND = "CHARGER";
     private final ServerSocket server;
