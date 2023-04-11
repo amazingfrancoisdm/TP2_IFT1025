@@ -1,15 +1,15 @@
 package main.server;
 
 /**
- * Interface des evenements/requetes que le serveur peut traiter.
+ * Interface des événements/requêtes que le serveur peut traiter.
  */
 @FunctionalInterface
 public interface EventHandler {
     /**
-     * Methode a implementer qui traite les evenements des requetes de l'utilisateur.
+     * Méthode à implémenter qui traite les événements des requêtes de l'utilisateur.
      *
-     * @param cmd Commande entree par l'utilisateur.
-     * @param arg Arguments qui suivent la commande entree.
+     * @param cmd Commande entrée par l'utilisateur.
+     * @param arg Arguments qui suivent la commande entrée.
      */
     void handle(String cmd, String arg);
 }

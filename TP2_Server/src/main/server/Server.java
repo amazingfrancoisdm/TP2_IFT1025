@@ -1,10 +1,9 @@
 package main.server;
 
 import javafx.util.Pair;
+import main.server.models.Course;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ import java.util.Arrays;
  * C'est une classe qui traite les requêtes d'informations. Server écoute les requêtes faites par l'utilisateur et gère ensuite celles-ci.
  * La classe renvoie à l'utilisateur les cours offerts selon la session voulue et peut aussi inscrire l'utilisateur à des cours.
  *
- * @Author Oussama Sghaier
+ * @author Oussama Sghaier
  *
  */
 public class Server {
@@ -156,7 +155,41 @@ public class Server {
      @param arg la session pour laquelle on veut récupérer la liste des cours
      */
     public void handleLoadCourses(String arg) {
-        // TODO: implémenter cette méthode
+
+        ArrayList<Course> cours = new ArrayList<>();
+        ArrayList<Course> coursToSend = new ArrayList<>();
+
+        try{
+            FileReader file = new FileReader("src/main/server/data/cours.txt");
+
+            BufferedReader reader = new BufferedReader(file);
+
+            String line;
+
+            while((line = reader.readLine()) != null){
+
+                String[] lineSplit = line.split("\t");
+                cours.add(new Course(lineSplit[1],lineSplit[0],lineSplit[2]));
+            }
+
+            reader.close();
+
+            for (int i=0; i< cours.size(); i++){
+
+                if(cours.get(i).getSession().equals(arg)){
+
+                    coursToSend.add(cours.get(i));
+
+                }
+            }
+        } catch (IOException e){
+            System.out.println("Erreur de lecture du fichier.");
+        }
+
+
+
+
+
     }
 
     /**
