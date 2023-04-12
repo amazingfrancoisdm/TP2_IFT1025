@@ -33,7 +33,9 @@ public class ClientSimple {
 
             //System.out.println("Cours reçu");
 
-            //System.out.println(cours.get(1).toString());
+            for (int i = 0; i < cours.size(); i++) {
+                System.out.println(cours.get(i).toString());
+            }
 
             os.close();
             is.close();
