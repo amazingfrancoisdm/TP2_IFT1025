@@ -2,6 +2,7 @@ package main;
 
 import javafx.util.Pair;
 import main.models.Course;
+import main.models.RegistrationForm;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -162,7 +163,8 @@ public class Server {
         ArrayList<Course> coursToSend = new ArrayList<>();
 
         try{
-            FileReader file = new FileReader("src/main/data/cours.txt");
+            //FileReader file = new FileReader("src/main/data/cours.txt");
+            FileReader file = new FileReader("./cours.txt");
 
             BufferedReader reader = new BufferedReader(file);
 
@@ -210,6 +212,16 @@ public class Server {
      */
     public void handleRegistration() {
         System.out.println("LOAD bien reçu");
+
+        try {
+            RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
+            System.out.println("OBJET REÇU");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

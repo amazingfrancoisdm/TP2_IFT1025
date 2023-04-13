@@ -50,7 +50,9 @@ public class ClientSimple {
             System.out.println("Que désirez-vous faire?");
             System.out.println("1. Consulter les cours offerts pour une autre session\n2. Inscription à un cours");
 
+            System.out.print("> Choix: ");
             int choix2 = scan.nextInt();
+            System.out.println();
 
             switch (choix2) {
                 case 1:
@@ -60,7 +62,7 @@ public class ClientSimple {
                     inscrire(cours);
                     break;
             }
-
+            break;
         }
 
 
@@ -139,17 +141,15 @@ public class ClientSimple {
 
             RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, bonCours);
 
-            System.out.println(form.toString());
-
-            System.out.println("Voulez-vous vous inscrire?");
-
-            String cmd = scanner.nextLine();
-
-            os.writeObject(cmd);
+            os.writeObject("INSCRIRE");
+            os.writeObject(form);
             os.flush();
 
             os.close();
             client.close();
+
+            System.out.println();
+            System.out.println("Félicitations! Inscription réussie de "+ prenom+" au cours "+ code+".");
 
 
         } catch (IOException e) {
