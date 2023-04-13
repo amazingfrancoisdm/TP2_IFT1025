@@ -185,8 +185,6 @@ public class Server {
                 }
             }
 
-            //System.out.println("Tableau de cours à envoyer créé.");
-
         } catch (IOException e){
             System.out.println("Erreur de lecture du fichier.");
         }
@@ -196,12 +194,12 @@ public class Server {
         try{
 
             objectOutputStream.writeObject(coursToSend);
-            //System.out.println("Tableau de cours envoyé");
 
         } catch(IOException e){
             System.out.println("Erreur d'éciture du fichier.");
         }
 
+        System.out.println("------------------------Chargement des cours fini---------------------------");
 
     }
 
@@ -211,7 +209,7 @@ public class Server {
      La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {
-        // TODO: implémenter cette méthode
+        System.out.println("LOAD bien reçu");
     }
 }
 

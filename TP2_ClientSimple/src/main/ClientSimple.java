@@ -1,44 +1,102 @@
 package main;
 
 import main.models.Course;
+import main.models.RegistrationForm;
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ClientSimple {
+    private static final String HOST = "127.0.0.1";
+    private static final int PORT = 8080;
     public static void main(String[] args) {
 
+        ArrayList<Course> cours = new ArrayList<>();
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("*** Bienvenue au portail dd'inscription de cours de l'UDEM ***");
+
+
+
+        while(true){
+
+            System.out.println("Veuillez choisir la session pour laquelle vous voulez consulter la liste de cours:\n1. Automne\n2. Hiver\n3. Été");
+            System.out.print("> Choix: ");
+            int choix = scan.nextInt();
+            String sessionChoisie = null;
+
+            switch (choix){
+                case 1:
+                    cours = charger("Automne");
+                    sessionChoisie = "automne";
+                    break;
+                case 2:
+                    cours = charger("Hiver");
+                    sessionChoisie = "hiver";
+                    break;
+                case 3:
+                    cours = charger("Ete");
+                    sessionChoisie = "été";
+            }
+            System.out.println();
+            System.out.println("Les cours offerts pendant la session d'"+sessionChoisie+" sont:");
+            printCourses(cours);
+
+            System.out.println("Que désirez-vous faire?");
+            System.out.println("1. Consulter les cours offerts pour une autre session\n2. Inscription à un cours");
+
+            int choix2 = scan.nextInt();
+
+            switch (choix2) {
+                case 1:
+                    System.out.println("-----------------------------------------------------------------------------");
+                    continue;
+                case 2:
+                    inscrire(cours);
+                    break;
+            }
+
+        }
+
+
+    }
+
+    public static void printCourses(ArrayList<Course> cours){
+
+        for (int i = 0; i < cours.size(); i++) {
+            System.out.println((i+1)+". " + cours.get(i).getCode() +"\t"+cours.get(i).getName());
+        }
+        System.out.println();
+
+
+    }
+    public static ArrayList<Course> charger(String sessionChoisie){
         try {
-            Socket clientSocket = new Socket("127.0.0.1", 8080);
+            Socket client = new Socket(HOST, PORT);
 
-            ObjectOutputStream os = new ObjectOutputStream(clientSocket.getOutputStream());
+            ObjectOutputStream os = new ObjectOutputStream(client.getOutputStream());
 
+            String session = "CHARGER " + sessionChoisie;
 
-            Scanner scanner = new Scanner(System.in);
+            os.writeObject(session);
+            os.flush();
 
-            System.out.println("What would you like to do?");
-            String szn = scanner.nextLine();
-
-            os.writeObject(szn);
-
-            //System.out.println("Request sent to the server.");
-
-            ObjectInputStream is = new ObjectInputStream(clientSocket.getInputStream());
+            ObjectInputStream is = new ObjectInputStream(client.getInputStream());
 
             ArrayList<Course> cours = new ArrayList<>();
 
             cours = (ArrayList<Course>) is.readObject();
 
-            //System.out.println("Cours reçu");
-
-            for (int i = 0; i < cours.size(); i++) {
-                System.out.println(cours.get(i).toString());
-            }
-
             os.close();
             is.close();
+            client.close();
+
+            return cours;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -46,6 +104,56 @@ public class ClientSimple {
             throw new RuntimeException(e);
         }
 
+    }
 
+    public static void inscrire(ArrayList<Course> cours){
+        try {
+            Socket client = new Socket(HOST, PORT);
+
+            ObjectOutputStream os = new ObjectOutputStream(client.getOutputStream());
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Veuillez saisir votre prénom: ");
+            String prenom = scanner.nextLine();
+
+            System.out.print("Veuillez saisir votre nom: ");
+            String nom = scanner.nextLine();
+
+            System.out.print("Veuillez saisir votre email: ");
+            String email = scanner.nextLine();
+
+            System.out.print("Veuillez saisir votre matricule: ");
+            String matricule = scanner.nextLine();
+
+            System.out.print("Veuillez saisir le code du cours: ");
+            String code = scanner.nextLine();
+
+            Course bonCours = null;
+
+            for (int i = 0; i < cours.size(); i++) {
+                if (cours.get(i).getCode().equals(code)){
+                    bonCours = cours.get(i);
+                }
+            }
+
+            RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, bonCours);
+
+            System.out.println(form.toString());
+
+            System.out.println("Voulez-vous vous inscrire?");
+
+            String cmd = scanner.nextLine();
+
+            os.writeObject(cmd);
+            os.flush();
+
+            os.close();
+            client.close();
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

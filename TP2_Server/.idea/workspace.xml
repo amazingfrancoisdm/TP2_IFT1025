@@ -12,6 +12,7 @@
     <list default="true" id="c4595020-6634-4879-a763-0646676cb34e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../TP2_ClientSimple/src/main/ClientSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientSimple/src/main/ClientSimple.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
