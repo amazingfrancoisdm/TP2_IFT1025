@@ -1,1 +1,2 @@
-Automne	IFT2255	12345678	Michalis	Famelis	mfamelis@iro.umontreal.ca
+Automne	IFT1015	1214561	Francois	Dddufour	francemail@
+Ete	IFT2256	214232	Thomas	Boulard	thom@boulard.ca

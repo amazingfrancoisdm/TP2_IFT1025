@@ -1,0 +1,8 @@
+Automne	IFT1015	12345678	Franc	Nodddfe	MAIL
+Automne	IFT2255	12345678	MONSIEUR	PETIT	EMAIL!
+Automne	IFT1015	12345678	Francois	Todaro	EMAILFRanckyboy
+Automne	IFT1015	12345678	Francois	Dufour	Eadfa
+Automne	IFT1015	12345678	franc	dm	blablaMAil
+Automne	IFT1015	12345678	Franc	Dm	MAIL
+Automne	IFT1015	12345678	Franc	Dm	mail
+Hiver	IFT1025	97463718	FrancoisXS	DufoX	MAIL

@@ -42,27 +42,46 @@ public class ClientSimple {
                 case 3:
                     cours = charger("Ete");
                     sessionChoisie = "été";
+                default:
+                    System.out.println("!!! Ceci n'est pas une option valide !!!");
+                    System.out.println();
+                    continue;
             }
             System.out.println();
             System.out.println("Les cours offerts pendant la session d'"+sessionChoisie+" sont:");
             printCourses(cours);
 
-            System.out.println("Que désirez-vous faire?");
-            System.out.println("1. Consulter les cours offerts pour une autre session\n2. Inscription à un cours");
+            boolean isChoiceCorrect = false;
+            boolean isTwoChosen = false;
 
-            System.out.print("> Choix: ");
-            int choix2 = scan.nextInt();
-            System.out.println();
+            while(!isChoiceCorrect){
+                System.out.println("1. Consulter les cours offerts pour une autre session\n2. Inscription à un cours");
 
-            switch (choix2) {
-                case 1:
-                    System.out.println("-----------------------------------------------------------------------------");
-                    continue;
-                case 2:
-                    inscrire(cours);
-                    break;
+                System.out.print("> Choix: ");
+                int choix2 = scan.nextInt();
+                System.out.println();
+
+                switch (choix2) {
+                    case 1:
+                        System.out.println("-----------------------------------------------------------------------------");
+                        System.out.println();
+                        isChoiceCorrect=true;
+                        break;
+                    case 2:
+                        isChoiceCorrect=true;
+                        isTwoChosen = true;
+                        inscrire(cours);
+                        break;
+                    default:
+                        System.out.println("!!! Ceci n'est pas une option valide !!!");
+                }
             }
-            break;
+
+            if (isTwoChosen){
+                break;
+            }
+            isChoiceCorrect = false;
+
         }
 
 
@@ -125,18 +144,40 @@ public class ClientSimple {
             System.out.print("Veuillez saisir votre email: ");
             String email = scanner.nextLine();
 
-            System.out.print("Veuillez saisir votre matricule: ");
-            String matricule = scanner.nextLine();
+            String matricule;
 
-            System.out.print("Veuillez saisir le code du cours: ");
-            String code = scanner.nextLine();
+            while(true) {
 
+                System.out.print("Veuillez saisir votre matricule: ");
+                matricule = scanner.nextLine();
+
+                if (matricule.length()==8){
+                    break;
+                }else{
+                    System.out.println("!! Matricule invalide !!");
+                }
+
+            }
+
+            String code;
             Course bonCours = null;
 
-            for (int i = 0; i < cours.size(); i++) {
-                if (cours.get(i).getCode().equals(code)){
-                    bonCours = cours.get(i);
+            while(true){
+                System.out.print("Veuillez saisir le code du cours: ");
+                code = scanner.nextLine();
+
+                for (int i = 0; i < cours.size(); i++) {
+                    if (cours.get(i).getCode().equals(code)){
+                        bonCours = cours.get(i);
+                    }
                 }
+
+                if (bonCours!=null){
+                    break;
+                } else {
+                    System.out.println("!!! Code de cours invalide !!!");
+                }
+
             }
 
             RegistrationForm form = new RegistrationForm(prenom, nom, email, matricule, bonCours);
@@ -145,14 +186,21 @@ public class ClientSimple {
             os.writeObject(form);
             os.flush();
 
-            os.close();
-            client.close();
-
             System.out.println();
-            System.out.println("Félicitations! Inscription réussie de "+ prenom+" au cours "+ code+".");
 
+            ObjectInputStream is = new ObjectInputStream(client.getInputStream());
+
+            String msg = (String) is.readObject();
+
+            System.out.println(msg);
+
+            client.close();
+            os.close();
+            is.close();
 
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

@@ -157,8 +157,6 @@ public class Server {
      */
     public void handleLoadCourses(String arg) {
 
-        //System.out.println("Requete reçue.");
-
         ArrayList<Course> cours = new ArrayList<>();
         ArrayList<Course> coursToSend = new ArrayList<>();
 
@@ -201,8 +199,6 @@ public class Server {
             System.out.println("Erreur d'éciture du fichier.");
         }
 
-        System.out.println("------------------------Chargement des cours fini---------------------------");
-
     }
 
     /**
@@ -211,11 +207,36 @@ public class Server {
      La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {
-        System.out.println("LOAD bien reçu");
 
         try {
             RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
-            System.out.println("OBJET REÇU");
+
+            //File file = new File("src/main/data/inscription.txt");
+            File file = new File("./inscription.txt");
+
+            //FileWriter fileWriter = new FileWriter("src/main/data/inscription.txt", true);
+            FileWriter fileWriter = new FileWriter("./inscription.txt", true);
+
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+
+
+            String session = form.getCourse().getSession();
+            String code = form.getCourse().getCode();
+            String matricule = form.getMatricule();
+            String prenom = form.getPrenom();
+            String nom = form.getNom();
+            String email = form.getEmail();
+
+            if (file.length() != 0){
+                writer.newLine();
+            }
+
+            writer.write(session+"\t"+code+"\t"+matricule+"\t"+prenom+"\t"+nom+"\t"+email);
+            writer.close();
+
+            String message = "Félicitations! Inscription réussie de "+ prenom+" au cours "+ code+".";
+
+            objectOutputStream.writeObject(message);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
