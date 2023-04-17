@@ -135,14 +135,44 @@ public class ClientSimple {
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.print("Veuillez saisir votre prénom: ");
-            String prenom = scanner.nextLine();
+            String prenom;
 
-            System.out.print("Veuillez saisir votre nom: ");
-            String nom = scanner.nextLine();
+            while(true){
+                System.out.print("Veuillez saisir votre prénom: ");
+                prenom = scanner.nextLine();
 
-            System.out.print("Veuillez saisir votre email: ");
-            String email = scanner.nextLine();
+                if(prenom.length()!=0){
+                    break;
+                } else {
+                    System.out.println("!!! Prénom invalide !!!");
+                }
+            }
+
+            String nom;
+
+            while(true){
+                System.out.print("Veuillez saisir votre nom: ");
+                nom = scanner.nextLine();
+
+                if(nom.length()!=0){
+                    break;
+                } else {
+                    System.out.println("!!! Nom invalide !!!");
+                }
+            }
+
+            String email;
+
+            while(true){
+                System.out.print("Veuillez saisir votre email: ");
+                email = scanner.nextLine();
+
+                if(email.length()!=0){
+                    break;
+                } else {
+                    System.out.println("!!! Email invalide !!!");
+                }
+            }
 
             String matricule;
 
