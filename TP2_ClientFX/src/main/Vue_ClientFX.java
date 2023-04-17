@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import main.models.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Vue_ClientFX extends Application {
 
@@ -68,6 +69,10 @@ public class Vue_ClientFX extends Application {
 
         loadBtn.setOnAction((action) -> {
             String session = (String) cBox.getValue();
+
+            if(session.equals("Été"))
+                session = "Ete";
+
             controleur.load(session);
         });
 
@@ -89,7 +94,11 @@ public class Vue_ClientFX extends Application {
 
         Button sendBtn = new Button("Envoyer");
         sendBtn.setOnAction((action) -> {
-            System.out.println("ALLo");
+
+            controleur.send();
+            System.out.println("envoyé");
+
+
         });
 
         rightPane.getChildren().addAll(rightTitle,grid, sendBtn);
@@ -143,15 +152,19 @@ public class Vue_ClientFX extends Application {
 
         Label prenomLabel = new Label("Prénom");
         prenomField = new TextField();
+        prenomField.setId("prenom");
 
         Label nomLabel = new Label("Nom");
         nomField = new TextField();
+        nomField.setId("nom");
 
         Label emailLabel = new Label("Email");
         emailField = new TextField();
+        emailField.setId("email");
 
         Label matriculeLabel = new Label("Matricule");
         matriculeField = new TextField();
+        matriculeField.setId("matricule");
 
         grid.add(prenomLabel,0,0,1,1);
         grid.add(prenomField, 1,0,1,1);

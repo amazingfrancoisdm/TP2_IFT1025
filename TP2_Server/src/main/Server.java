@@ -210,11 +210,9 @@ public class Server {
 
         try {
             RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
-
-            //File file = new File("src/main/data/inscription.txt");
+            
             File file = new File("./inscription.txt");
 
-            //FileWriter fileWriter = new FileWriter("src/main/data/inscription.txt", true);
             FileWriter fileWriter = new FileWriter("./inscription.txt", true);
 
             BufferedWriter writer = new BufferedWriter(fileWriter);
