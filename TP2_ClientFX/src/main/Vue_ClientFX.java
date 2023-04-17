@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import main.models.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Vue_ClientFX extends Application {
 
@@ -30,8 +29,6 @@ public class Vue_ClientFX extends Application {
     private static TextField nomField;
     private static TextField emailField;
     private static TextField matriculeField;
-
-
 
     @Override
     public void start(Stage stage) throws IOException {

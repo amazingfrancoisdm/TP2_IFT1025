@@ -1,2 +1,3 @@
 Automne	IFT1015	12345678	Francois	Dufour	email
 Automne	IFT1015	12345678	Maude	Todaro	mail
+Automne	IFT1015	12345678	Francois	Dufour Martel	francois@gmail.com
