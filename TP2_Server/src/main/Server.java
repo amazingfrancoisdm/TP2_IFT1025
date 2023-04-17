@@ -44,7 +44,6 @@ public class Server {
         this.server = new ServerSocket(port, 1);
         this.handlers = new ArrayList<EventHandler>();
         this.addEventHandler(this::handleEvents);
-        System.out.println("Serveur créé");
     }
 
     /**
