@@ -232,14 +232,14 @@ public class Server {
             writer.write(session+"\t"+code+"\t"+matricule+"\t"+prenom+"\t"+nom+"\t"+email);
             writer.close();
 
-            String message = "Félicitations! Inscription réussie de "+ prenom+" au cours "+ code+".";
+            String message = "Félicitations! Inscription réussie de "+ prenom+ " au cours " + code+".";
 
             objectOutputStream.writeObject(message);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur d'écriture");
         }
     }
 }

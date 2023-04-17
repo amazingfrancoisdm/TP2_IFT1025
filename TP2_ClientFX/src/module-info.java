@@ -1,3 +1,7 @@
+/**
+ * Configuration des prérequis JavaFX et des permissions
+ */
+
 module main {
     requires javafx.controls;
     requires javafx.fxml;

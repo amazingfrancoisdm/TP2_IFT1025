@@ -229,9 +229,9 @@ public class ClientSimple {
             is.close();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur d'écriture au serveur.");
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur de lecture du serveur");
         }
     }
 }

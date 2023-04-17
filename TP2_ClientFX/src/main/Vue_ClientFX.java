@@ -15,6 +15,10 @@ import main.models.*;
 
 import java.io.IOException;
 
+/**
+ * Classe Vue du design MVC. Celle-ci extends Application et est responsable d'affiche les composants graphiques.
+ * C'est essentiellement le GUI.
+ */
 public class Vue_ClientFX extends Application {
 
     private static Controleur controleur;
@@ -30,6 +34,12 @@ public class Vue_ClientFX extends Application {
     private static TextField emailField;
     private static TextField matriculeField;
 
+    /**
+     * Méthode qui lanche la fenêtre avec tous les composants placés
+     *
+     * @param stage Fenêtre de l'application
+     * @throws IOException Exception en cas d'erreur d'input/output comme il s'agit de l'ouverture d'une fenêtre.
+     */
     @Override
     public void start(Stage stage) throws IOException {
 
@@ -105,6 +115,8 @@ public class Vue_ClientFX extends Application {
         stage.setScene(scene);
         stage.show();
     }
+
+    //Méthode qui crée les différentes zones dans la scène.
     private void createPanes(){
         splitPane = new SplitPane();
 
@@ -125,6 +137,8 @@ public class Vue_ClientFX extends Application {
 
         leftPane.getItems().addAll(topLeft, botLeft);
     }
+
+    //Méthode privée qui crée le TableView dans le côté gauche de l'application.
     private void createTable(){
         coursesList = new TableView<Course>();
         coursesList.setId("tableView");
@@ -144,7 +158,8 @@ public class Vue_ClientFX extends Application {
         coursesList.maxHeightProperty().bind(topLeft.heightProperty().multiply(0.90));
     }
 
-    public void createGrid(){
+    //Méthode privée qui crée le GridPane dans le côté droit de l'application.
+    private void createGrid(){
         grid = new GridPane();
 
         Label prenomLabel = new Label("Prénom");
@@ -177,6 +192,11 @@ public class Vue_ClientFX extends Application {
         grid.setVgap(10);
     }
 
+    /**
+     * Méthode main qui appelle la méthode qui lance la fenêtre.
+     *
+     * @param args Arguments passés à la méthode.
+     */
     public static void main(String[] args) {
         launch();
     }
