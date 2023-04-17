@@ -161,7 +161,7 @@ public class Server {
         ArrayList<Course> coursToSend = new ArrayList<>();
 
         try{
-            //FileReader file = new FileReader("src/main/data/cours.txt");
+
             FileReader file = new FileReader("./cours.txt");
 
             BufferedReader reader = new BufferedReader(file);
@@ -186,7 +186,7 @@ public class Server {
             }
 
         } catch (IOException e){
-            System.out.println("Erreur de lecture du fichier.");
+            System.out.println("Erreur de lecture du fichier cours.txt." + e.getMessage());
         }
 
         System.out.println(coursToSend.get(0).toString());
@@ -196,7 +196,7 @@ public class Server {
             objectOutputStream.writeObject(coursToSend);
 
         } catch(IOException e){
-            System.out.println("Erreur d'éciture du fichier.");
+            System.out.println("Erreur d'éciture du ArrayList dans le stream." + e.getMessage());
         }
 
     }
@@ -210,10 +210,10 @@ public class Server {
 
         try {
             RegistrationForm form = (RegistrationForm) objectInputStream.readObject();
-            
+
             File file = new File("./inscription.txt");
 
-            FileWriter fileWriter = new FileWriter("./inscription.txt", true);
+            FileWriter fileWriter = new FileWriter(file, true);
 
             BufferedWriter writer = new BufferedWriter(fileWriter);
 
@@ -237,9 +237,9 @@ public class Server {
             objectOutputStream.writeObject(message);
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur d'écriture du message dans le stream" + e.getMessage());
         } catch (ClassNotFoundException e) {
-            System.out.println("Erreur d'écriture");
+            System.out.println("Erreur de lecture du formulaire dans le stream." + e.getMessage());
         }
     }
 }

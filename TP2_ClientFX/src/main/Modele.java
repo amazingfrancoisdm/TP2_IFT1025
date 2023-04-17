@@ -54,9 +54,11 @@ public class Modele {
             return cours;
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur d'écriture sur le stream/Erreur de connexion." + e.getMessage());
+            return null;
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur de lecture du stream." + e.getMessage());
+            return null;
         }
 
 
@@ -120,7 +122,7 @@ public class Modele {
      */
     public String inscrire(String prenom, String nom, String email, String matricule, Course cours){
 
-        String msg;
+        String msg = "";
 
         try {
             Socket client = new Socket(HOST, PORT);
@@ -143,11 +145,10 @@ public class Modele {
 
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur d'écriture/lecture/de connexion au serveur." + e.getMessage());
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur de lecture du stream." + e.getMessage());
         }
-
 
         return msg;
     }

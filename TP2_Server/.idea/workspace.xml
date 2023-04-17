@@ -10,14 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4595020-6634-4879-a763-0646676cb34e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../TP2_ClientFX/out/artifacts/TP2_ClientFX_jar/TP2_ClientFX.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientFX/out/artifacts/TP2_ClientFX_jar/TP2_ClientFX.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Controleur.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Controleur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Launcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Modele.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Modele.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Vue_ClientFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientFX/src/main/Vue_ClientFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TP2_ClientFX/src/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientFX/src/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP2_ClientSimple/out/artifacts/TP2_ClientSimple_jar/TP2_ClientSimple.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientSimple/out/artifacts/TP2_ClientSimple_jar/TP2_ClientSimple.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TP2_ClientSimple/src/main/ClientSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientSimple/src/main/ClientSimple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TP2_ClientSimple/target/classes/main/ClientSimple.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TP2_ClientSimple/target/classes/main/ClientSimple.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TP2_Server_jar/TP2_Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TP2_Server_jar/TP2_Server.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/TP2_Server_jar/inscription.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/TP2_Server_jar/inscription.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/main/Server.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

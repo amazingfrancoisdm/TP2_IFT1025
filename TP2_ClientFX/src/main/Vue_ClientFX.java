@@ -105,7 +105,6 @@ public class Vue_ClientFX extends Application {
             controleur.send();
             System.out.println("envoyé");
 
-
         });
 
         rightPane.getChildren().addAll(rightTitle,grid, sendBtn);

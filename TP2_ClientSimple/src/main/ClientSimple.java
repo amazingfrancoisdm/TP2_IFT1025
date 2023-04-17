@@ -42,6 +42,7 @@ public class ClientSimple {
                 case 3:
                     cours = charger("Ete");
                     sessionChoisie = "été";
+                    break;
                 default:
                     System.out.println("!!! Ceci n'est pas une option valide !!!");
                     System.out.println();
@@ -120,9 +121,11 @@ public class ClientSimple {
             return cours;
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur d'écriture de la commande au serveur/Erreur de connexion." + e.getMessage());
+            return null;
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Erreur de lecture des cours dans le stream." + e.getMessage());
+            return null;
         }
 
     }
@@ -229,9 +232,9 @@ public class ClientSimple {
             is.close();
 
         } catch (IOException e) {
-            System.out.println("Erreur d'écriture au serveur.");
+            System.out.println("Erreur d'écriture de la commande au serveur/Erreur de connexion." + e.getMessage());
         } catch (ClassNotFoundException e) {
-            System.out.println("Erreur de lecture du serveur");
+            System.out.println("Erreur de lecture du message du serveur." + e.getMessage());
         }
     }
 }

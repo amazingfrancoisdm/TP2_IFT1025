@@ -16,6 +16,7 @@ public class Controleur {
 
     private Modele modele;
     private Scene vue;
+    private String isRegistered = "Félicitations";
 
     /**
      * Constructeur de la classe. Assigne les paramètres passés aux champs privés.
@@ -77,7 +78,7 @@ public class Controleur {
 
         Alert alert = new Alert(Alert.AlertType.NONE);
 
-        if (returnMsg.contains("Félicitations")){
+        if (returnMsg.contains(isRegistered)){
 
             alert.setAlertType(Alert.AlertType.CONFIRMATION);
 
@@ -89,8 +90,6 @@ public class Controleur {
 
         alert.setContentText(returnMsg);
         alert.showAndWait();
-
-
     }
 
 }
