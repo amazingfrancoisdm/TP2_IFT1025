@@ -103,7 +103,6 @@ public class Vue_ClientFX extends Application {
         sendBtn.setOnAction((action) -> {
 
             controleur.send();
-            System.out.println("envoyé");
 
         });
 
